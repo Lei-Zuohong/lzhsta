@@ -192,3 +192,4 @@
     plt.plot(x, func(result_paras, x), label='fit')
     plt.fill_between(x, mean - std, mean + std, color='gray', alpha=0.5)
     plt.show()
+![pic](pic/pic1.png)
