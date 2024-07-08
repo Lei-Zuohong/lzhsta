@@ -3,9 +3,9 @@
   - [1.1.创建一个统计参数](#11创建一个统计参数)
   - [1.2.创建一系列参数](#12创建一系列参数)
     - [方法一：自定义](#方法一自定义)
-    - [方法二：从numpy (Npara \* Nsample)进行统计（自动存在cor）](#方法二从numpy-npara--nsample进行统计自动存在cor)
-    - [方法三：从pandas (Npara \* Nsample)进行统计（自动存在cor）](#方法三从pandas-npara--nsample进行统计自动存在cor)
-  - [1.3.给一系列参数添加相关性](#13给一系列参数添加相关性)
+    - [方法二：从numpy (Npara \* Nsample)进行统计（自动统计cor）](#方法二从numpy-npara--nsample进行统计自动统计cor)
+    - [方法三：从pandas (Npara \* Nsample)进行统计（自动统计cor）](#方法三从pandas-npara--nsample进行统计自动统计cor)
+  - [1.3.给一系列参数添加自定义相关性](#13给一系列参数添加自定义相关性)
 - [2.功能1：生成抽样](#2功能1生成抽样)
   - [2.1.根据相关性生成高斯抽样](#21根据相关性生成高斯抽样)
   - [2.2.生成高斯抽样](#22生成高斯抽样)
@@ -54,7 +54,7 @@
     1    b     1     1      0     10  True
     2    c     1     1      0     10  True
     '''
-### 方法二：从numpy (Npara * Nsample)进行统计（自动存在cor）
+### 方法二：从numpy (Npara * Nsample)进行统计（自动统计cor）
     Npara = 3
     Nsample = 1000
     sample = numpy.random.rand(Npara, Nsample)
@@ -71,7 +71,7 @@
     b -0.000727  1.000000 -0.026183
     c -0.002233 -0.026183  1.000000
     '''
-### 方法三：从pandas (Npara * Nsample)进行统计（自动存在cor）
+### 方法三：从pandas (Npara * Nsample)进行统计（自动统计cor）
     Nsample = 1000
     sample = pandas.DataFrame({'a': numpy.random.rand(Nsample),
                             'b': numpy.random.rand(Nsample),
@@ -90,7 +90,7 @@
     b -0.000727  1.000000 -0.026183
     c -0.002233 -0.026183  1.000000
     '''
-## 1.3.给一系列参数添加相关性
+## 1.3.给一系列参数添加自定义相关性
     paras.set_correlation(numpy.array([[1, 0, 0],
                                        [0, 1, 0],
                                        [0, 0, 1]]))
@@ -126,6 +126,7 @@
     1198  0.820498  2.334813  1.199177
     1199  1.710241  3.179919  1.06094
     '''
+    # 对生成的样本进行验证
     new_paras = lzhsta.para.Parameters(sample_mc)
     print(new_paras)
     print(new_paras.cor)
