@@ -162,6 +162,7 @@
     paras.add_para(lzhsta.para.Parameter(name='b', value=1, error=1, limitl=0, limitr=10, vary=True))
     paras.add_para(lzhsta.para.Parameter(name='c', value=1, error=1, limitl=0, limitr=10, vary=True))
 ## 3.4.拟合
+    import lzhsta.fit
     result_paras = lzhsta.fit.do_lmfit(chisq, paras, x, ry, e, show_result=True)
     # 输出
     '''
